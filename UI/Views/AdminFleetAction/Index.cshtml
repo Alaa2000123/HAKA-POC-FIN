@@ -1,0 +1,32 @@
+﻿@model Connecter.Models.ActionTake
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Action</h4>
+            <p class="card-description">
+                @*Basic form elements*@
+            </p>
+            @using (Html.BeginForm("Save", "AdminFleetAction", FormMethod.Post))
+            {
+                @Html.HiddenFor(e=>e.folio)
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Employee</label>
+                    @Html.DropDownListFor(e=>e.EmpId, ViewBag.AllEmp as SelectList,"Choose Employee",new { @class="form-control"})
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail7">Action</label>
+                    @Html.DropDownListFor(e=>e.ActionId, ViewBag.AllActions as SelectList,"Choose Action",new { @class="form-control"})
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Remark</label>
+                    @Html.TextAreaFor(e=>e.Remark,new { @class="form-control"})
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-light">Cancel</button>
+            }
+        </div>
+    </div>
+</div>

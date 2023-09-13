@@ -1,0 +1,52 @@
+﻿@model DTO.InsuranceInfo
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Insurance</h4>
+            <p class="card-description">
+                @*Basic form elements*@
+            </p>
+            @using (Html.BeginForm("Save", "Insurance", FormMethod.Post))
+            {
+                @*<div class="form-group">
+                    <label for="exampleInputName1">Car Number</label>
+                    @Html.TextBoxFor(e=>e.InsuranceTypeId,new { @class="form-control"})
+
+                </div>*@
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Employee</label>
+                    @Html.DropDownListFor(e=>e.EmployeeId, ViewBag.AllEmp as SelectList,"Choose Employee",new { @class="form-control"})
+               </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Start Date :</label>
+                    @Html.TextBoxFor(e=>e.InsuranceStartDate,new { @class="form-control", @Type="Date"})
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">End Date :</label>
+                    @Html.TextBoxFor(e=>e.InsuranceEndDate,new { @class="form-control", @Type="Date"})
+                </div>
+
+                @* <div class="form-group">
+            <label>File upload</label>
+            <input type="file" name="img[]" class="file-upload-default">
+            <div class="input-group col-xs-12">
+            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+            <span class="input-group-append">
+            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+            </span>
+            </div>
+            </div>*@
+                <div class="form-group">
+                   <label for="exampleInputCity1">InsuranceType</label>
+                  @Html.DropDownListFor(e=>e.InsuranceTypeId, ViewBag.AllInsuranceType as SelectList,"Choose Insurance Type",new { @class="form-control"})
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Remark</label>
+                    @Html.TextAreaFor(e=>e.Remark,new { @class="form-control"})
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-light">Cancel</button>
+            }
+        </div>
+    </div>
+</div>
