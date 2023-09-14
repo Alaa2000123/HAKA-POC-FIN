@@ -18,6 +18,11 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Index(int Id)
         {
+            string admin = Request.Cookies["user"];
+            if (admin != "Admin")
+            {
+                return RedirectToAction("index", "home");
+            }
             var emps = await _client.GeneralEmployee.GetAll();
             ViewBag.AllEmp = new SelectList(emps, "Id", "NameEn");
             GetEmployeeTaskListResponse result1 = await _K2Service.GetEmployeeTaskListAsync("Q.Abed", String.Empty, String.Empty, String.Empty, String.Empty, String.Empty);

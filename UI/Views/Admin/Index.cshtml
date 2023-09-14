@@ -4,6 +4,7 @@
     IEnumerable<DTO.GeneralEmployee> employees = ViewBag.Emps;
     K2TaskItem[] Items = ViewBag.listwf;
     IEnumerable<DTO.GeneralRequestsService> Gr = ViewBag.GR;
+    Layout = "_LayoutAdmin";
 }
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
@@ -32,34 +33,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var item in Model)
+                        @foreach (var item in Model)
                         {
                             var Itemwf = Items.FirstOrDefault(e => e.Folio == (item.Id).ToString());
                             var itemGr = Gr.FirstOrDefault(e => e.RequestId == item.RequestId);
                             <tr>
-                            <td class="py-1">
-                                <img src="~/images/Photo Fixed.png" alt="image" />
-                            </td>
-                            <td>
+                                <td class="py-1">
+                                    <img src="~/images/Photo Fixed.png" alt="image" />
+                                </td>
+                                <td>
                                     @employees.FirstOrDefault(e=>e.Id == item.EmployeeId).NameEn
-                            </td>
-                            <td>
-                                @if(itemGr.StepId == 1){
-                                <div class="progress">
+                                </td>
+                                <td>
+                                    @if (itemGr.StepId == 1)
+                                    {
+                                        <div class="progress">
                                             <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                        </div>
                                     }
-                                    else if(itemGr.StepId == 2)
+                                    else if (itemGr.StepId == 2)
                                     {
                                         <div class="progress">
                                             <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                    }else 
+                                    }
+                                    else
                                     {
                                         <div class="progress">
                                             <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                    }                          
+                                    }
                                 </td>
                                 @if (Itemwf != null)
                                 {
@@ -79,9 +82,9 @@
                                         Completed
                                     </td>
                                 }
-                               
-                        </tr>
-                        }        
+
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

@@ -4,6 +4,7 @@
     IEnumerable<DTO.GeneralEmployee> employees = ViewBag.Emps;
     K2TaskItem[] Items = ViewBag.listwf;
     IEnumerable<DTO.GeneralRequestsService> Gr = ViewBag.GR;
+    Layout = "_LayoutAdmin";
 }
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
@@ -56,7 +57,7 @@
                                             <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     }
-                                    else 
+                                    else
                                     {
                                         <div class="progress">
                                             <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>

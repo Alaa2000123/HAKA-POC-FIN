@@ -2,28 +2,24 @@
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Insurance</h4>
+            <h4 class="card-title">Request Insurance</h4>
             <p class="card-description">
                 @*Basic form elements*@
             </p>
             @using (Html.BeginForm("Save", "Insurance", FormMethod.Post))
             {
                 @*<div class="form-group">
-                    <label for="exampleInputName1">Car Number</label>
-                    @Html.TextBoxFor(e=>e.InsuranceTypeId,new { @class="form-control"})
+            <label for="exampleInputName1">Car Number</label>
+            @Html.TextBoxFor(e=>e.InsuranceTypeId,new { @class="form-control"})
 
-                </div>*@
+            </div>*@
                 <div class="form-group">
                     <label for="exampleInputEmail3">Employee</label>
-                    @Html.DropDownListFor(e=>e.EmployeeId, ViewBag.AllEmp as SelectList,"Choose Employee",new { @class="form-control"})
-               </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword4">Start Date :</label>
-                    @Html.TextBoxFor(e=>e.InsuranceStartDate,new { @class="form-control", @Type="Date"})
+                    @Html.TextBox("EmpId",$"{ViewBag.AllEmp}",new { @class="form-control", @readonly="true"})
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword4">End Date :</label>
-                    @Html.TextBoxFor(e=>e.InsuranceEndDate,new { @class="form-control", @Type="Date"})
+                    <label for="exampleInputCity1">Insurance Company Type</label>
+                    @Html.DropDownListFor(e=>e.InsuranceCompanyTypeId, ViewBag.insucomp as SelectList,"Choose Insurance Type",new { @class="form-control"})
                 </div>
 
                 @* <div class="form-group">
@@ -37,8 +33,8 @@
             </div>
             </div>*@
                 <div class="form-group">
-                   <label for="exampleInputCity1">InsuranceType</label>
-                  @Html.DropDownListFor(e=>e.InsuranceTypeId, ViewBag.AllInsuranceType as SelectList,"Choose Insurance Type",new { @class="form-control"})
+                    <label for="exampleInputCity1">Insurance Type</label>
+                    @Html.DropDownListFor(e=>e.InsuranceTypeId, ViewBag.AllInsuranceType as SelectList,"Choose Insurance Type",new { @class="form-control"})
                 </div>
                 <div class="form-group">
                     <label for="exampleTextarea1">Remark</label>

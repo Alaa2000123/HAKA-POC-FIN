@@ -16,7 +16,7 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            IEnumerable<DTO.InsuranceInfo> Insu =await _client.InsuranceInfo.GetAll();
+            IEnumerable<DTO.InsuranceInfo> Insu = await _client.InsuranceInfo.GetAll();
             var emps = await _client.GeneralEmployee.GetAll();
             ViewBag.Emps = emps;
             GetEmployeeTaskListResponse result1 = await _K2Service.GetEmployeeTaskListAsync("Q.Abed", String.Empty, String.Empty, String.Empty, String.Empty, String.Empty);

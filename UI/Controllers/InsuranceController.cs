@@ -19,8 +19,11 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var AllEmp = await _client.GeneralEmployee.GetAll();
-            ViewBag.AllEmp = new SelectList(AllEmp, "Id", "NameEn");
+            int user = Convert.ToInt32(Request.Cookies["user"]);
+            var AllEmp = await _client.GeneralEmployee.GetByID(user);
+            ViewBag.AllEmp = AllEmp.NameEn;
+            var insucomp = await _client.InsuranceCompanyType.GetAll();
+            ViewBag.insucomp = new SelectList(insucomp, "Id", "NameEn");
             var lookupfleet = await _client.GeneralLookup.GetAll();
             var AllInsuranceType = lookupfleet.Where(e => e.GroupId == 1);
             ViewBag.AllInsuranceType = new SelectList(AllInsuranceType, "Gnid", "NameEn");
@@ -29,6 +32,8 @@ namespace UI.Controllers
         public async Task<IActionResult> Save(DTO.InsuranceInfo insuranceInfo)
         {
             Response forcast;
+            insuranceInfo.InsuranceStartDate = DateTime.Now;
+            insuranceInfo.InsuranceEndDate = (DateTime.Now).AddYears(4);
             forcast = await _client.InsuranceInfo.Insert(insuranceInfo);
             insuranceInfo = JsonConvert.DeserializeObject<DTO.InsuranceInfo>(forcast.Result.ToString());
             if (forcast.IsSuccess)

@@ -5,51 +5,70 @@
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Fleet Manage</h4>
+            <h4 class="card-title">Request Fleet</h4>
             <p class="card-description">
-                
+
             </p>
-        @using (Html.BeginForm("Save", "Home", FormMethod.Post))
-        {
-                <div class="form-group">
-                    <label for="exampleInputName1">Car Number</label>
-                    @Html.TextBoxFor(e=>e.CarNumber,new { @class="form-control"})
-                   
-                </div>
+            @using (Html.BeginForm("Save", "Home", FormMethod.Post))
+            {
                 <div class="form-group">
                     <label for="exampleInputEmail3">Employee</label>
-                    @Html.DropDownListFor(e=>e.EmployeeId, ViewBag.AllEmp as SelectList,"Choose Employee",new { @class="form-control"})
+                    @Html.TextBox("EmpId",$"{ViewBag.AllEmp}",new { @class="form-control", @readonly="true"})
                 </div>
-               <div class="form-group">
-                    <label for="Long">Long</label>
-                    @Html.TextBoxFor(e=>e.Long,new { @class="form-control"})
-                </div>
-                   <div class="form-group">
-                    <label for="Lat">Lat</label>
-                    @Html.TextBoxFor(e=>e.Lat,new { @class="form-control"})
-                </div>
-
-               @* <div class="form-group">
-                    <label>File upload</label>
-                    <input type="file" name="img[]" class="file-upload-default">
-                    <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                        <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                    </div>
-                </div>*@
                 <div class="form-group">
                     <label for="exampleInputCity1">FleetManagementType</label>
                     @Html.DropDownListFor(e=>e.FleetManagementTypeId, ViewBag.AllFleetManagementType as SelectList,"Choose Fleet Management Type",new { @class="form-control"})
                 </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Car Number</label>
+                    @Html.TextBoxFor(e=>e.CarNumber,new { @class="form-control"})
+
+                </div>
+
+                <div class="form-group" style="flex-direction:row;display:none" id="longlat">
+                    <div style="width:50%">
+                        <label for="Long">Long</label>
+                        @Html.TextBoxFor(e=>e.Long,new { @class="form-control"})
+                    </div>
+                    <div style="width:50%">
+                        <label for="Lat">Lat</label>
+                        @Html.TextBoxFor(e=>e.Lat,new { @class="form-control"})
+                    </div>
+                </div>
+
+                @* <div class="form-group">
+            <label>File upload</label>
+            <input type="file" name="img[]" class="file-upload-default">
+            <div class="input-group col-xs-12">
+            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+            <span class="input-group-append">
+            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+            </span>
+            </div>
+            </div>*@
+
                 <div class="form-group">
                     <label for="exampleTextarea1">Remark</label>
                     @Html.TextAreaFor(e=>e.Remark,new { @class="form-control"})
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-light">Cancel</button>
-        }
+            }
         </div>
     </div>
 </div>
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#FleetManagementTypeId').on('change', function () {
+            var ComplainingpartiesId = $('#FleetManagementTypeId').find(":selected").val();
+            if (ComplainingpartiesId == 7) {
+                $("#longlat").css("display", "Flex");
+            }
+            else {
+                $("#longlat").css("display", "none");
+            }
+        });
+    });
+</script>

@@ -9,7 +9,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Admin</title>
+    <title>Skydash Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../vendors/feather/feather.css">
     <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
@@ -31,13 +31,12 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo" style="text-align:center;">
-                                @*<img style="width:50px;height:50px" src="~/images/15f37389-a427-4770-bbf5-f0c756fedeb5.jpg" alt="logo"><h1>HAKA Group</h1>*@
-                                <img src="~/images/logohaka.png" />
+                                <img style="width:50px;height:50px" src="~/images/15f37389-a427-4770-bbf5-f0c756fedeb5.jpg" alt="logo"><h1>HAKA Group</h1>
                             </div>
-                            @*<h4>Hello! let's get started</h4>*@
+                            <h4>Hello! let's get started</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
-                             @using (Html.BeginForm("Check", "Login", FormMethod.Post))
-                             {
+                            @using (Html.BeginForm("Check", "Login", FormMethod.Post))
+                            {
                                 <div class="form-group">
                                     @Html.TextBoxFor(e=>e.UserName,new { @class="form-control form-control-lg", @placeholder="Username"})
                                 </div>
@@ -56,15 +55,15 @@
                                     </div>
                                     <a href="#" class="auth-link text-black">Forgot password?</a>
                                 </div>
-                               @* <div class="mb-2">
+                                <div class="mb-2">
                                     <button type="button" class="btn btn-block btn-facebook auth-form-btn">
                                         <i class="ti-facebook mr-2"></i>Connect using facebook
                                     </button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
                                     Don't have an account? <a href="register.html" class="text-primary">Create</a>
-                                </div>*@
-                             }
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

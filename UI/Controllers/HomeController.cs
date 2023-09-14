@@ -21,10 +21,11 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var AllEmp = await _client.GeneralEmployee.GetAll();
-            ViewBag.AllEmp = new SelectList(AllEmp, "Id", "NameEn");
-            var lookupfleet =await _client.GeneralLookup.GetAll();
-            var AllFleetManagementType = lookupfleet.Where(e => e.GroupId == 2 );
+            int user = Convert.ToInt32(Request.Cookies["user"]);
+            var AllEmp = await _client.GeneralEmployee.GetByID(user);
+            ViewBag.AllEmp = AllEmp.NameEn;
+            var lookupfleet = await _client.GeneralLookup.GetAll();
+            var AllFleetManagementType = lookupfleet.Where(e => e.GroupId == 2);
             ViewBag.AllFleetManagementType = new SelectList(AllFleetManagementType, "Gnid", "NameEn");
             return View();
         } 
