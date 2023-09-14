@@ -1,0 +1,19 @@
+﻿
+@{
+    if (ViewBag.User != "1")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+}
+<br />
+ @if (ViewBag.User != "1")
+    {
+     <h1 style="text-align:center">Welcome To Home Page @ViewBag.User</h1>
+    }
+    else{
+    <h1 style="text-align:center">Welcome To Admin Page </h1>
+    }

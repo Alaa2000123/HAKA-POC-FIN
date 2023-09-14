@@ -57,6 +57,21 @@ namespace UI.Controllers
             }
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> Welcomepage()
+        {
+            var CUser = Request.Cookies["user"];
+            if(CUser == "Admin" || CUser == "Manager")
+            {
+                ViewBag.User = "1";
+            }
+            else
+            {
+                var User = await _client.GeneralEmployee.GetByID(Convert.ToInt32(CUser));
+                ViewBag.User = User.NameEn;
+            }
+            return View();
+
+        }
 
     }
 }

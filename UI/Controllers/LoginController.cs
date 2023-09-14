@@ -27,14 +27,14 @@ namespace UI.Controllers
                 CookieOptions options = new CookieOptions();
                 options.Expires = DateTime.Now.AddDays(7);
                 Response.Cookies.Append("User", $"Admin", options);
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Welcomepage", "Home");
             }
             else if(userLogin.UserName == "Manager")
             {
                 CookieOptions options = new CookieOptions();
                 options.Expires = DateTime.Now.AddDays(7);
                 Response.Cookies.Append("User", $"Manager", options);
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Welcomepage", "Home");
             }
             else
             {
@@ -66,7 +66,7 @@ namespace UI.Controllers
                     Response.Cookies.Append("User", $"", options);
                     return RedirectToAction("SignIn");
                 }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Welcomepage", "Home");
             }
 
         }
