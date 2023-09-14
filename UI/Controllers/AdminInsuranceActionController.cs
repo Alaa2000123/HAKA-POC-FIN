@@ -20,8 +20,10 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Index(int Id)
         {
-            var emps = await _client.GeneralEmployee.GetAll();
-            ViewBag.AllEmp = new SelectList(emps, "Id", "NameEn");
+            var flee = await _client.FleetManagement.GetByID(Id);
+
+            var emps = await _client.GeneralEmployee.GetByID(Convert.ToInt32(flee.EmployeeId));
+            ViewBag.AllEmp = emps.NameEn;
             GetEmployeeTaskListResponse result1 = await _K2Service.GetEmployeeTaskListAsync("Q.Abed", String.Empty, String.Empty, String.Empty, String.Empty, String.Empty);
             K2TaskItem[] Items = result1.Body.GetEmployeeTaskListResult;
             K2TaskItem item = Items.FirstOrDefault(e => e.ServiceName == "Insurance" && e.Folio == (Id).ToString());
