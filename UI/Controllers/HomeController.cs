@@ -32,6 +32,8 @@ namespace UI.Controllers
       
         public async Task<IActionResult> Save(DTO.FleetManagement FleetManagement)
         {
+            int user = Convert.ToInt32(Request.Cookies["user"]);
+            FleetManagement.EmployeeId = user;
             Response forcast;
             forcast = await _client.FleetManagement.Insert(FleetManagement);
             FleetManagement = JsonConvert.DeserializeObject<DTO.FleetManagement>(forcast.Result.ToString());

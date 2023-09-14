@@ -47,6 +47,7 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Save(ActionTake actionTake)
         {
+           
             var insu = await _client.InsuranceInfo.GetByID(actionTake.folio);
 
             #region GeneralRequests

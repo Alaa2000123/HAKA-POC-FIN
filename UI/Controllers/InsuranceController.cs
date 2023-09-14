@@ -31,6 +31,8 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Save(DTO.InsuranceInfo insuranceInfo)
         {
+            int user = Convert.ToInt32(Request.Cookies["user"]);
+            insuranceInfo.EmployeeId = user;
             Response forcast;
             insuranceInfo.InsuranceStartDate = DateTime.Now;
             insuranceInfo.InsuranceEndDate = (DateTime.Now).AddYears(4);
