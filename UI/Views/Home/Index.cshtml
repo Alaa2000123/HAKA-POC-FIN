@@ -16,22 +16,24 @@
                     @Html.TextBox("EmpId",$"{ViewBag.AllEmp}",new { @class="form-control", @readonly="true"})
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputCity1">FleetManagementType</label>
-                    @Html.DropDownListFor(e=>e.FleetManagementTypeId, ViewBag.AllFleetManagementType as SelectList,"Choose Fleet Management Type",new { @class="form-control"})
+                    <label for="exampleInputCity1">Request Type</label>
+                    @Html.DropDownListFor(e=>e.FleetManagementTypeId, ViewBag.AllFleetManagementType as SelectList,"Choose Request Type",new { @class="form-control"})
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="carNo">
                     <label for="exampleInputName1">Car Number</label>
                     @Html.TextBoxFor(e=>e.CarNumber,new { @class="form-control"})
 
                 </div>
 
+                <h3 id="lblLocation" style="display:none; color:#2cb684">Location Information</h3>
                 <div class="form-group" style="flex-direction:row;display:none" id="longlat">
                     <div style="width:50%">
-                        <label for="Long">Long</label>
+                        <label for="Long">Longitude</label>
                         @Html.TextBoxFor(e=>e.Long,new { @class="form-control"})
                     </div>
+                    &nbsp;&nbsp;
                     <div style="width:50%">
-                        <label for="Lat">Lat</label>
+                        <label for="Lat">Latitude</label>
                         @Html.TextBoxFor(e=>e.Lat,new { @class="form-control"})
                     </div>
                 </div>
@@ -63,11 +65,16 @@
     $(document).ready(function () {
         $('#FleetManagementTypeId').on('change', function () {
             var ComplainingpartiesId = $('#FleetManagementTypeId').find(":selected").val();
-            if (ComplainingpartiesId == 7) {
+            if (ComplainingpartiesId == 5) {
+                $("#carNo").css("display", "none");
+            }
+            else if (ComplainingpartiesId == 7) {
                 $("#longlat").css("display", "Flex");
+                $("#lblLocation").css("display", "Flex");
             }
             else {
                 $("#longlat").css("display", "none");
+                $("#lblLocation").css("display", "none");
             }
         });
     });
