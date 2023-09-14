@@ -45,12 +45,19 @@ namespace UI.Controllers
                     Response.Cookies.Append("User", $"2", options);
 
                 }
-                else
+                else if (userLogin.UserName.ToLower() == "raya")
                 {
                     CookieOptions options = new CookieOptions();
                     options.Expires = DateTime.Now.AddDays(7);
                     Response.Cookies.Append("User", $"3", options);
 
+                }
+                else
+                {
+                    CookieOptions options = new CookieOptions();
+                    options.Expires = DateTime.Now.AddDays(7);
+                    Response.Cookies.Append("User", $"", options);
+                    return RedirectToAction("SignIn");
                 }
                 return RedirectToAction("Index", "Home");
             }
