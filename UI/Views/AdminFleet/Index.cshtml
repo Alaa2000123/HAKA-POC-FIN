@@ -37,53 +37,112 @@
                         {
                             var Itemwf = Items.FirstOrDefault(e => e.Folio == (item.Id).ToString());
                             var itemGr = Gr.FirstOrDefault(e => e.RequestId == item.RequestId);
-                            <tr>
-                                <td class="py-1">
-                                    <img src="~/images/Photo Fixed.png" alt="image" />
-                                </td>
-                                <td>
-                                    @employees.FirstOrDefault(e=>e.Id == item.EmployeeId).NameEn
-                                </td>
-                                <td>
-                                    @if (itemGr.StepId == 1)
-                                    {
-                                        <div class="progress">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    }
-                                    else if (itemGr.StepId == 2)
-                                    {
-                                        <div class="progress">
-                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="progress">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    }
-                                </td>
-                                @if (Itemwf != null)
+                            @if (ViewBag.user == 1)
+                            {
+                                if (itemGr.StepId != 2)
                                 {
-                                    <td>
-                                        @Itemwf.status
-                                    </td>
+                                    <tr>
+                                        <td class="py-1">
+                                            <img src="~/images/Photo Fixed.png" alt="image" />
+                                        </td>
+                                        <td>
+                                            @employees.FirstOrDefault(e=>e.Id == item.EmployeeId).NameEn
+                                        </td>
+                                        <td>
+                                            @if (itemGr.StepId == 1)
+                                            {
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            }
+                                            else if (itemGr.StepId == 2)
+                                            {
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            }
+                                        </td>
+                                        @if (Itemwf != null)
+                                        {
+                                            <td>
+                                                @Itemwf.status
+                                            </td>
 
-                                    <td>
-                                        <a href="@Url.Action("Index","AdminFleetAction",new{id=@item.Id})">See More</a>
-                                    </td>
+                                            <td>
+                                                <a href="@Url.Action("Index","AdminFleetAction",new{id=@item.Id})">See More</a>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                Completed
+                                            </td>
+                                            <td>
+                                                Completed
+                                            </td>
+                                        }
+                                    </tr>
                                 }
-                                else
+                            }
+                            else
+                            {
+                                if (itemGr.StepId != 1)
                                 {
-                                    <td>
-                                        Completed
-                                    </td>
-                                    <td>
-                                        Completed
-                                    </td>
+                                    <tr>
+                                        <td class="py-1">
+                                            <img src="~/images/Photo Fixed.png" alt="image" />
+                                        </td>
+                                        <td>
+                                            @employees.FirstOrDefault(e=>e.Id == item.EmployeeId).NameEn
+                                        </td>
+                                        <td>
+                                            @if (itemGr.StepId == 1)
+                                            {
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            }
+                                            else if (itemGr.StepId == 2)
+                                            {
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            }
+                                        </td>
+                                        @if (Itemwf != null)
+                                        {
+                                            <td>
+                                                @Itemwf.status
+                                            </td>
+
+                                            <td>
+                                                <a href="@Url.Action("Index","AdminFleetAction",new{id=@item.Id})">See More</a>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                Completed
+                                            </td>
+                                            <td>
+                                                Completed
+                                            </td>
+                                        }
+                                    </tr>
                                 }
-                            </tr>
+                            }
                         }
                     </tbody>
                 </table>

@@ -20,7 +20,7 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Index(int Id)
         {
-            var flee = await _client.FleetManagement.GetByID(Id);
+            var flee = await _client.InsuranceInfo.GetByID(Id);
 
             var emps = await _client.GeneralEmployee.GetByID(Convert.ToInt32(flee.EmployeeId));
             ViewBag.AllEmp = emps.NameEn;

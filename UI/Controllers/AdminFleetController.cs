@@ -16,6 +16,19 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            string user = Request.Cookies["User"];
+            if(user == null)
+            {
+                return RedirectToAction("SignIn", "Login");
+            }
+            if(user == "Admin")
+            {
+                ViewBag.user = 1;
+            }
+            else
+            {
+                ViewBag.user = 2;
+            }
             IEnumerable<DTO.FleetManagement> flee = await _client.FleetManagement.GetAll();
             var emps = await _client.GeneralEmployee.GetAll();
             ViewBag.Emps = emps;

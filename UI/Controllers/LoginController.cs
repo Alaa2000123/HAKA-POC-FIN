@@ -21,12 +21,19 @@ namespace UI.Controllers
         }
         public IActionResult Check(UserLogin userLogin)
         {
-            if (userLogin.UserName == "Admin" && userLogin.Password == "admin")
+            if (userLogin.UserName == "Admin")
             {
 
                 CookieOptions options = new CookieOptions();
                 options.Expires = DateTime.Now.AddDays(7);
                 Response.Cookies.Append("User", $"Admin", options);
+                return RedirectToAction("Index", "Admin");
+            }
+            else if(userLogin.UserName == "Manager")
+            {
+                CookieOptions options = new CookieOptions();
+                options.Expires = DateTime.Now.AddDays(7);
+                Response.Cookies.Append("User", $"Manager", options);
                 return RedirectToAction("Index", "Admin");
             }
             else

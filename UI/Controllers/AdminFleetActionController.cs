@@ -18,11 +18,7 @@ namespace UI.Controllers
         }
         public async Task<IActionResult> Index(int Id)
         {
-            string admin = Request.Cookies["user"];
-            if (admin != "Admin")
-            {
-                return RedirectToAction("index", "home");
-            }
+            
             var flee = await _client.FleetManagement.GetByID(Id);
             
             var emps = await _client.GeneralEmployee.GetByID(Convert.ToInt32(flee.EmployeeId));
