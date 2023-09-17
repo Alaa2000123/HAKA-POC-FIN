@@ -28,8 +28,8 @@ namespace UI.Controllers
             var AllFleetManagementType = lookupfleet.Where(e => e.GroupId == 2);
             ViewBag.AllFleetManagementType = new SelectList(AllFleetManagementType, "Gnid", "NameEn");
             return View();
-        } 
-      
+        }
+
         public async Task<IActionResult> Save(DTO.FleetManagement FleetManagement)
         {
             int user = Convert.ToInt32(Request.Cookies["user"]);
@@ -60,7 +60,7 @@ namespace UI.Controllers
         public async Task<IActionResult> Welcomepage()
         {
             var CUser = Request.Cookies["user"];
-            if(CUser == "Admin" || CUser == "Manager")
+            if (CUser == "Admin" || CUser == "Manager")
             {
                 ViewBag.User = "1";
             }
@@ -72,6 +72,13 @@ namespace UI.Controllers
             return View();
 
         }
-
+        public IActionResult IDashboard()
+        {
+            return View();
+        }
+        public IActionResult IDashboard2()
+        {
+            return View();
+        }
     }
 }

@@ -295,12 +295,25 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Welcomepage","Home")">
+                        <a class="nav-link" href="">
                             <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Home</span>
+                            <span class="menu-title">Driver History</span>
                         </a>
-                    </li>
 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
+                            <i class="icon-bar-graph menu-icon"></i>
+                            <span class="menu-title">DashBoards</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="error">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("IDashboard","Home")"> Driver History </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("IDashboard2","Home")"> Driver Locations </a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="icon-layout menu-icon"></i>
@@ -415,5 +428,7 @@
     <script src="~/js/todolist.js"></script>
     <script src="~/js/dashboard.js"></script>
     <script src="~/js/Chart.roundedBarCharts.js"></script>
+    <script src="~/js/chart.js"></script>
+
 </body>
 </html>

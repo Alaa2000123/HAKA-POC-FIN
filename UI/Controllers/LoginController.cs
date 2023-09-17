@@ -27,14 +27,14 @@ namespace UI.Controllers
                 CookieOptions options = new CookieOptions();
                 options.Expires = DateTime.Now.AddDays(7);
                 Response.Cookies.Append("User", $"Admin", options);
-                return RedirectToAction("Welcomepage", "Home");
+                return RedirectToAction("IDashboard", "Home");
             }
             else if(userLogin.UserName == "Manager")
             {
                 CookieOptions options = new CookieOptions();
                 options.Expires = DateTime.Now.AddDays(7);
                 Response.Cookies.Append("User", $"Manager", options);
-                return RedirectToAction("Welcomepage", "Home");
+                return RedirectToAction("IDashboard", "Home");
             }
             else
             {
