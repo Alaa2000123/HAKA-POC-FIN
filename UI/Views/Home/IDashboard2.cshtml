@@ -3,25 +3,7 @@
     ViewData["Title"] = "IDashboard2";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<style>
-    #map {
-        height: 250px;
-    }
-
-    #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: "Roboto", "sans-serif";
-        line-height: 30px;
-        padding-left: 10px;
-    }
-</style>@*
+@*
 <div class="col-lg-12 stretch-card">
     <div class="card">
         <div class="card-body">
@@ -219,80 +201,3 @@
     </div>
 </div>
 *@
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"defer></script>
-
-
-<div id="floating-panel">
-    <b>Start: </b>
-    <select id="start">
-        <option value="chicago, il">Chicago</option>
-        <option value="st louis, mo">St Louis</option>
-        <option value="joplin, mo">Joplin, MO</option>
-        <option value="oklahoma city, ok">Oklahoma City</option>
-        <option value="amarillo, tx">Amarillo</option>
-        <option value="gallup, nm">Gallup, NM</option>
-        <option value="flagstaff, az">Flagstaff, AZ</option>
-        <option value="winona, az">Winona</option>
-        <option value="kingman, az">Kingman</option>
-        <option value="barstow, ca">Barstow</option>
-        <option value="san bernardino, ca">San Bernardino</option>
-        <option value="los angeles, ca">Los Angeles</option>
-    </select>
-    <b>End: </b>
-    <select id="end">
-        <option value="chicago, il">Chicago</option>
-        <option value="st louis, mo">St Louis</option>
-        <option value="joplin, mo">Joplin, MO</option>
-        <option value="oklahoma city, ok">Oklahoma City</option>
-        <option value="amarillo, tx">Amarillo</option>
-        <option value="gallup, nm">Gallup, NM</option>
-        <option value="flagstaff, az">Flagstaff, AZ</option>
-        <option value="winona, az">Winona</option>
-        <option value="kingman, az">Kingman</option>
-        <option value="barstow, ca">Barstow</option>
-        <option value="san bernardino, ca">San Bernardino</option>
-        <option value="los angeles, ca">Los Angeles</option>
-    </select>
-</div>
-<div id="map"></div>
-<script>
-    function initMap() {
-        const directionsService = new google.maps.DirectionsService();
-        const directionsRenderer = new google.maps.DirectionsRenderer();
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 7,
-            center: { lat: 41.85, lng: -87.65 },
-        });
-
-        directionsRenderer.setMap(map);
-
-        const onChangeHandler = function () {
-            calculateAndDisplayRoute(directionsService, directionsRenderer);
-        };
-
-        document.getElementById("start").addEventListener("change", onChangeHandler);
-        document.getElementById("end").addEventListener("change", onChangeHandler);
-    }
-
-    function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-        directionsService
-            .route({
-                origin: {
-                    query: document.getElementById("start").value,
-                },
-                destination: {
-                    query: document.getElementById("end").value,
-                },
-                travelMode: google.maps.TravelMode.DRIVING,
-            })
-            .then((response) => {
-                directionsRenderer.setDirections(response);
-            })
-            .catch((e) => window.alert("Directions request failed due to " + status));
-    }
-
-    window.initMap = initMap;
-
-</script>
